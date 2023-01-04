@@ -1,0 +1,29 @@
+def busca_binaria(lista,n,inic,fim): 
+    meio = (inic+fim) // 2
+    if inic > fim:
+        return -1
+    elif n == lista[meio]:     
+        return meio
+            
+    elif n > lista[meio]:   #pegar apenas lado direito 
+        return busca_binaria(lista,n,meio+1,fim)
+                
+    else:       #pegar lado esquerdo da lista
+        return busca_binaria(lista,n,inic,meio-1)                
+
+def main():
+    n = int(input())   #numero a ser procurado
+    l = input()    
+    lista = l.split()
+    for i in range(len(lista)):
+        lista[i] = int(lista[i])
+    inic = 0
+    fim = len(lista)-1
+    
+    pertence = busca_binaria(lista, n, inic, fim)
+    
+    if pertence != -1:
+        print('A lista contém',n)
+    else:
+        print('A lista não contém',n)
+main() 
